@@ -1,7 +1,4 @@
-<p align="center">
-  <img src="assets/banner.png" alt="Medicine Reminder Banner" width="100%">
-</p>
-
+<img src="assets/banner.jpg" alt="Medicine Reminder Banner" width="100%">
 
 
 
