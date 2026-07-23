@@ -1,0 +1,94 @@
+:root {
+    color-scheme: light;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7ff 0%, #eef6ff 100%);
+    color: #18212f;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.08) !important;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #4f46e5 0%, #2563eb 100%);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #4f46e5 0%, #2563eb 100%);
+    border: none;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+    border: none;
+}
+
+.form-control:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.15);
+}
+
+/* Dark theme */
+.theme-dark {
+    background: linear-gradient(135deg, #0f172a 0%, #111827 100%);
+    color: #e6eef8;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-dark .card {
+    background: #0b1220;
+    color: #e6eef8;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-dark .navbar {
+    background: linear-gradient(135deg, #0b1220 0%, #111827 100%) !important;
+    transition: background-color 0.3s ease;
+}
+
+.theme-dark .form-control,
+.theme-dark .form-select {
+    background: #0b1220;
+    color: #e6eef8;
+    border-color: #374151;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.theme-dark .form-control:focus,
+.theme-dark .form-select:focus {
+    background: #0b1220;
+    color: #e6eef8;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.25);
+}
+
+.theme-dark .btn-outline-secondary {
+    color: #e6eef8;
+    border-color: #374151;
+}
+
+.theme-dark .table {
+    color: #e6eef8;
+    border-color: #374151;
+}
+
+.theme-dark .table-light {
+    background-color: #0b1220 !important;
+}
+
+.theme-dark .text-muted {
+    color: #9ca3af !important;
+}
+
+.theme-dark .bg-light {
+    background-color: #1f2937 !important;
+}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card border-0 shadow rounded-4">
+            <div class="card-body p-4 p-md-5">
+                <h2 class="fw-bold mb-3">Add Medicine</h2>
+                <p class="text-muted">Capture the key details so reminders can be scheduled accurately.</p>
+                <form method="post" novalidate>
+                    {{ form.hidden_tag() }}
+                    <div class="row g-3">
+                        <div class="col-md-6">{{ form.name.label(class="form-label") }}{{ form.name(class="form-control") }}</div>
+                        <div class="col-md-6">{{ form.dosage.label(class="form-label") }}{{ form.dosage(class="form-control") }}</div>
+                        <div class="col-md-6">{{ form.medicine_type.label(class="form-label") }}{{ form.medicine_type(class="form-select") }}</div>
+                        <div class="col-md-6">{{ form.intake_instruction.label(class="form-label") }}{{ form.intake_instruction(class="form-select") }}</div>
+                        <div class="col-md-6">{{ form.start_date.label(class="form-label") }}{{ form.start_date(class="form-control") }}</div>
+                        <div class="col-md-6">{{ form.end_date.label(class="form-label") }}{{ form.end_date(class="form-control") }}</div>
+                        <div class="col-md-6">{{ form.reminder_time.label(class="form-label") }}{{ form.reminder_time(class="form-control") }}</div>
+                        <div class="col-md-6">{{ form.frequency.label(class="form-label") }}{{ form.frequency(class="form-select") }}</div>
+                        <div class="col-md-6">{{ form.color_label.label(class="form-label") }}{{ form.color_label(class="form-control") }}</div>
+                        <div class="col-12">{{ form.notes.label(class="form-label") }}{{ form.notes(class="form-control", rows=4) }}</div>
+                    </div>
+                    <div class="mt-4">
+                        {{ form.submit(class="btn btn-primary") }}
+                        <a class="btn btn-outline-secondary ms-2" href="{{ url_for('main.medicines') }}">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

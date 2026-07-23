@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="fw-bold mb-1">Reports</h2>
+        <p class="text-muted mb-0">Weekly adherence and summary metrics.</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card border-0 shadow rounded-4 p-4">
+            <canvas id="lineChart" height="120"></canvas>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card border-0 shadow rounded-4 p-4 text-center">
+            <h5 class="mb-3">Summary</h5>
+            <p class="mb-1">Taken: <strong>{{ total_taken }}</strong></p>
+            <p class="mb-1">Skipped: <strong>{{ total_skipped }}</strong></p>
+            <p class="mb-1">Pending: <strong>{{ total_pending }}</strong></p>
+            <canvas id="pieChart" height="140"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const labels = {{ labels|tojson }};
+    const takenData = {{ taken_data|tojson }};
+    const skippedData = {{ skipped_data|tojson }};
+    const pendingData = {{ pending_data|tojson }};
+
+    const ctx = document.getElementById('lineChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                { label: 'Taken', data: takenData, borderColor: '#16a34a', tension: 0.3 },
+                { label: 'Skipped', data: skippedData, borderColor: '#ef4444', tension: 0.3 },
+                { label: 'Pending', data: pendingData, borderColor: '#f59e0b', tension: 0.3 },
+            ]
+        },
+        options: { responsive: true }
+    });
+
+    const pieCtx = document.getElementById('pieChart').getContext('2d');
+    new Chart(pieCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Taken', 'Skipped', 'Pending'],
+            datasets: [{ data: [{{ total_taken }}, {{ total_skipped }}, {{ total_pending }}], backgroundColor: ['#16a34a','#ef4444','#f59e0b'] }]
+        },
+    });
+</script>
+{% endblock %}

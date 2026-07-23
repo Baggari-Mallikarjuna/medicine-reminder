@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row g-4">
+    <div class="col-12">
+        <div class="card border-0 shadow rounded-4 p-4 bg-gradient-primary text-white">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <div>
+                    <h2 class="fw-bold mb-1">Welcome back, {{ current_user.full_name or current_user.username }}.</h2>
+                    <p class="mb-0 opacity-75">Here is a quick overview of your medicine schedule for today.</p>
+                </div>
+                <a href="{{ url_for('main.add_medicine') }}" class="btn btn-light text-primary fw-semibold">Quick Add Medicine</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow rounded-4 h-100">
+            <div class="card-body">
+                <p class="text-muted mb-1">Total Medicines</p>
+                <h3 class="fw-bold">{{ total_medicines }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow rounded-4 h-100">
+            <div class="card-body">
+                <p class="text-muted mb-1">Today's Pending</p>
+                <div class="d-flex align-items-center">
+                    <h3 class="fw-bold me-2">{{ today_pending }}</h3>
+                    {% if today_pending > 0 %}
+                        <span class="badge bg-danger rounded-circle" title="Reminders for today">{{ today_pending }}</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card border-0 shadow rounded-4 h-100">
+            <div class="card-body">
+                <p class="text-muted mb-1">Taken Medicines</p>
+                <h3 class="fw-bold">{{ taken_count }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow rounded-4 h-100">
+            <div class="card-body">
+                <p class="text-muted mb-1">Missed Medicines</p>
+                <h3 class="fw-bold">{{ missed_count }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="card border-0 shadow rounded-4">
+            <div class="card-body">
+                <h5 class="fw-bold mb-3">Today’s Medicines</h5>
+                {% if medicines %}
+                    <ul class="list-group list-group-flush">
+                        {% for medicine in medicines %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <div>
+                                    <h6 class="mb-1">{{ medicine.name }}</h6>
+                                    <p class="text-muted mb-0">{{ medicine.dosage }} · {{ medicine.reminder_time }}</p>
+                                </div>
+                                <span class="badge rounded-pill bg-light text-dark">{{ medicine.frequency }}</span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted mb-0">No medicines added yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card border-0 shadow rounded-4">
+            <div class="card-body">
+                <h5 class="fw-bold mb-3">Recent Activity</h5>
+                {% if reminder_logs %}
+                    <ul class="list-group list-group-flush">
+                        {% for log in reminder_logs %}
+                            <li class="list-group-item px-0">
+                                <div class="d-flex justify-content-between">
+                                    <span>{{ log.medicine_name }}</span>
+                                    <span class="text-muted small">{{ log.status }}</span>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted mb-0">No recent activity.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
