@@ -1,3 +1,10 @@
+<p align="center">
+  <img src="assets/banner.png" alt="Medicine Reminder Banner" width="100%">
+</p>
+
+
+
+
 # 💊 Medicine Reminder Web Application
 
 A Flask-based Medicine Reminder Web Application that helps users manage their medications, receive timely reminders, and improve medication adherence. The application provides secure user authentication, medicine scheduling, reminder management, and user profile features through a clean and responsive web interface.
